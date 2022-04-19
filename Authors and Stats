@@ -1,0 +1,64 @@
+CREATE TABLE authors (id INTEGER PRIMARY KEY, name TEXT, age INTEGER, location TEXT);
+
+INSERT into authors (name, age, location) 
+    VALUES ("Sarah J Maas", 36, "Pennsylvania");
+INSERT into authors (name, age, location)
+    VALUES ("Cassandre Clare", 48, "Massachuesetts");
+INSERT into authors (name, age, location)
+    Values ("Vernoica Roth", 33, "Chicago");
+INSERT into authors (name, age, location)
+    Values ("Kiera Cass", 40, "Los Angelas");
+    
+CREATE TABLE books (id INTEGER PRIMARY KEY, title TEXT, publication_year INTEGER, author_id INTEGER);
+
+INSERT into books (title, publication_year, author_id)
+    VALUES ("A court of thorns and roses", 2015, 1);
+INSERT into books (title, publication_year, author_id)
+    VALUES ("Throne of glass", 2012, 1);
+INSERT into books (title, publication_year, author_id)
+    VALUES ("Crescent City", 2021, 1);
+INSERT into books (title, publication_year, author_id)
+    VALUES ("House of earth and blood", 2020, 1);
+INSERT into books (title, publication_year, author_id)
+    VALUES ("A court of silver flames", 2021, 1);
+INSERT into books (title, publication_year, author_id)
+    VALUES ("City of bones", 2007, 2);
+INSERT into books (title, publication_year, author_id)
+    VALUES ("Clockwork angel", 2010, 2);
+INSERT into books (title, publication_year, author_id)
+    VALUES ("Clockwork prince", 2011, 2);
+INSERT into books (title, publication_year, author_id)
+    VALUES ("Divergent", 2011, 3);
+INSERT into books (title, publication_year, author_id)
+    VALUES ("Insurgent", 2012, 3);
+INSERT into books (title, publication_year, author_id)
+    VALUES ("Allegiant", 2013, 3);
+INSERT into books (title, publication_year, author_id)
+    VALUES ("The selection", 2012, 4);
+INSERT into books (title, publication_year, author_id)
+    VALUES ("The elite", 2013, 4);
+INSERT into books (title, publication_year, author_id)
+    VALUES ("The one", 2014, 4);
+INSERT into books (title, publication_year, author_id)
+    VALUES ("The heir", 2015, 4);
+
+CREATE TABLE awards (id INTEGER PRIMARY KEY, award_title TEXT, award_year INTEGER, publication_id INTEGER);
+
+INSERT into awards (award_title, award_year, publication_id)
+    VALUES ("Best Fantasy", 2020, 4);
+INSERT into awards (award_title, award_year, publication_id)
+    VALUES ("Best Fantasy", 2021, 5);
+INSERT into awards (award_title, award_year, publication_id)
+    VALUES ("Georgia Peach Book Awards", 2010, 6);
+INSERT into awards (award_title, award_year, publication_id)
+    VALUES ("Goodreads Favorite Book", 2011, 9);
+INSERT into awards (award_title, award_year, publication_id)
+    VALUES ("Best Goodreads Author", 2012, 10);
+INSERT into awards (award_title, award_year, publication_id)
+    VALUES ("Teen book of the year", 2015, 14);
+
+SELECT books.title as book_title, authors.name as author, awards.award_title FROM BOOKS
+LEFT OUTER JOIN authors
+ON books.author_id = authors.id
+LEFT OUTER JOIN awards
+ON books.id = awards.publication_id;
