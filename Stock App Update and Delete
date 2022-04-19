@@ -1,0 +1,17 @@
+/* What does the app's SQL look like? */
+CREATE TABLE stock_app (id INTEGER PRIMARY KEY, name TEXT, stock TEXT, account_balance INTEGER, customer_id INTEGER);
+
+INSERT into stock_app (name, stock, account_balance, customer_id) VALUES ("Tommy Jones", "AAPL", 1000, 1);
+INSERT into stock_app (name, stock, account_balance, customer_id) VALUES ("Veronica Holmes", "VOO", 2500, 2);
+INSERT into stock_app (name, stock, account_balance, customer_id) VALUES ("Jamie Appleseed", "JNUG", 500, 3);
+INSERT into stock_app (name, stock, account_balance, customer_id) VALUES ("Woody Trompleton", "VOOV", 5000, 4);
+INSERT into stock_app (name, stock, account_balance, customer_id) VALUES ("Veronica Holmes", "AAPL", 6700, 5);
+INSERT into stock_app (name, stock, account_balance, customer_id) VALUES ("Jamie Appleseed", "CORR", 250, 3);
+
+UPDATE stock_app SET name = "Veronica Hastings" WHERE id = 2;
+
+SELECT * from stock_app;
+
+DELETE from stock_app WHERE stock = "CORR";
+
+SELECT * from stock_app;
