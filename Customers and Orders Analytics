@@ -1,0 +1,40 @@
+#In this SQL, I'm querying a database with multiple tables in it to quantify statistics about customer and order data. 
+
+#1. How many orders were placed in January?
+SELECT COUNT (*)
+FROM BIT_DB.jansales; 
+
+#2. How many of those orders were for an iPhone?
+SELECT COUNT (*)
+FROM BIT_DB.jansales
+WHERE product='iPhone'; 
+
+#3. Select the customer account numbers for all the orders that were placed in February.
+SELECT cust.acctnum
+FROM BIT_DB.febsales Feb
+LEFT JOIN BIT_DB.customers cust
+ON cust.order_id=feb.orderID;
+
+#4. Which product was the cheapest one sold in January, and what was the price? 
+SELECT DISTINCT product, MIN (price)
+FROM BIT_DB.JanSales
+GROUP by product
+ORDER by price ASC
+LIMIT 1; 
+
+#5. What is the total revenue for each product sold in January? 
+SELECT sum(quantity)*price as revenue, product
+FROM BIT_DB.JanSales
+GROUP BY product
+
+#6. Which products were sold in February at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?
+SELECT product, SUM(quantity), SUM(quantity)*price as revenue, location
+FROM FebSales
+WHERE location LIKE "548 Lin%";
+
+#7. How many customers ordered more than 2 products at a time in February, and what was the average amount spent for those customers?
+SELECT COUNT (cust.acctnum), AVG (quantity)*feb.price
+FROM BIT_DB.FebSales feb
+LEFT JOIN BIT_DB.customers cust
+ON feb.orderID=cust.order_id
+WHERE feb.quantity>2;
