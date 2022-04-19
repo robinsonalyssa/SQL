@@ -1,3 +1,5 @@
+#In this SQL code, I'm updating and deleting information in the database of a stock app. 
+
 /* What does the app's SQL look like? */
 CREATE TABLE stock_app (id INTEGER PRIMARY KEY, name TEXT, stock TEXT, account_balance INTEGER, customer_id INTEGER);
 
