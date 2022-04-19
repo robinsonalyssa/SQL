@@ -1,3 +1,5 @@
+#In this SQL code, I've created a small database and am using SQL to conduct relational queries to learn how the tables relate to each other.   
+
 CREATE TABLE authors (id INTEGER PRIMARY KEY, name TEXT, age INTEGER, location TEXT);
 
 INSERT into authors (name, age, location) 
