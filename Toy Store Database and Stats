@@ -1,0 +1,12 @@
+CREATE TABLE toy_store (id INTEGER Primary Key, name TEXT, price_USD INTEGER, quantity_sold INTEGER, quantity_on_hand INTEGER);
+INSERT into toy_store VALUES (1, "wooden blocks", 10, 50, 20);
+INSERT into toy_store VALUES (2, "baby doll", 5, 25, 10);
+INSERT into toy_store VALUES (3, "coloring book", 2, 15, 5);
+INSERT into toy_store VALUES (4, "legos", 30, 75, 15);
+INSERT into toy_store VALUES (5, "nerf gun", 15, 25, 5);
+INSERT into toy_store VALUES (6, "train set", 20, 20, 10);
+
+SELECT * from toy_store ORDER by price_USD;
+SELECT SUM (price_USD) from toy_store;
+SELECT SUM (price_USD) from toy_store Group by (quantity_sold);
+SELECT name, SUM (quantity_sold), SUM (price_USD) from toy_store GROUP by (price_USD);
