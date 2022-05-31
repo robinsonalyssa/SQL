@@ -1,0 +1,54 @@
+# For this project, I downloaded Spotify data from Kaggle.
+# Then I created a table to insert Spotify data into.
+# Finally, I performed analytics on the data using SQL. 
+
+#Creating the table: 
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness text NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL 
+)
+
+#Then I inserted the Spotify Data .csv into the table.
+
+#Next, I explored the data using the following SQL. 
+
+#1. What is the most popular song?
+SELECT * from BIT_DB.spotifydata
+WHERE popularity >= 95;
+
+#2 What is the song with the highest danceability?
+SELECT * from BIT_DB.spotifydata
+WHERE danceability >= 0.85;
+
+#3 What is the longest song?
+SELECT * from BIT_DB.spotifydata
+ORDER BY duration_ms DESC
+LIMIT 1; 
+
+#4 What is the average song length?
+SELECT AVG(duration_ms) from BIT_DB.spotifydata; 197488.4
+
+#5 Do any artists have more than one song in the top 50? If so who has the most and and how many songs do they have in the top 50?
+SELECT id, track_name, popularity, artist_name, COUNT (artist_name) FROM BIT_DB.spotifydata
+GROUP by artist_name
+ORDER by COUNT (artist_name) DESC;
+
+#6 What is the avg popularity, danceability, and energy by artist and track?
+SELECT track_name, artist_name, avg(popularity), avg(danceability), avg(energy) from BIT_DB.spotifydata
+GROUP BY track_name, artist_name;
